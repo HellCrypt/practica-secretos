@@ -1,5 +1,6 @@
-// ERROR COMÚN: secretos escritos directamente en el código
-const STRIPE_KEY = "sk_live_134c35b1777ba0b25282184a";
-const DB_PASSWORD = "Admin123!";
+require("dotenv").config();
 
-console.log("App de pagos iniciada");
+const STRIPE_KEY = process.env.STRIPE_KEY;
+if (!STRIPE_KEY) throw new Error("Falta STRIPE_KEY en .env");
+
+console.log("App de pagos iniciada con clave:", STRIPE_KEY.slice(0, 8) + "***");
